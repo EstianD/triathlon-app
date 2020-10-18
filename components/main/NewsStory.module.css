@@ -1,0 +1,22 @@
+.storyCard {
+  padding: 0.5rem;
+  width: 100%;
+  display: relative;
+  border: none;
+  border-bottom: 1px solid rgb(170, 170, 170);
+  /* border-radius: 0; */
+}
+
+.newsImage {
+  width: 250px;
+  min-height: 150px;
+  max-height: 200px;
+}
+
+.newsRow {
+  width: 100%;
+}
+
+.overflow {
+  overflow: hidden;
+}
