@@ -4,11 +4,6 @@ export default (req, res) => {
   const url = "https://api.triathlon.org/v1/content/news";
   const apiKey = process.env.APIKEY;
 
-  //   const todayDate = new Date().toISOString().split("T")[0];
-  //   console.log(todayDate);
-  // console.log(todayDate.toISOString().split("T")[0]);
-
-  console.log("request: ", req.query);
   const options = {
     headers: {
       apikey: apiKey,
@@ -20,11 +15,11 @@ export default (req, res) => {
     },
   };
 
-  console.log(options);
+  // console.log(options);
 
   async function getNewsData() {
     const data = await axios.get(url, options);
-    console.log(data.data);
+    // console.log(data.data);
     res.json(data.data);
   }
 

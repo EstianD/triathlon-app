@@ -3,7 +3,11 @@ import { Row, Col, Card, Image } from "react-bootstrap";
 
 import styles from "./NewsHeading.module.css";
 
+// Import service
+import calcTimeDifference from "../services/calcTimeDifference";
+
 function NewsHeading({ news }) {
+  // console.log("head: ", news);
   const handleOnHover = () => {
     setHovered((prevState) => !prevState);
   };
@@ -36,6 +40,7 @@ function NewsHeading({ news }) {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text> */}
+              {calcTimeDifference(news.news_entry_date)}
             </Card.ImgOverlay>
           </Col>
         </Row>

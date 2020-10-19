@@ -8,9 +8,9 @@ export default (req, res) => {
     query: { page },
   } = req;
 
-  //     const todayDate = new Date().toISOString().split("T")[0];
-  //     console.log(todayDate);
-  //   console.log(todayDate.toISOString().split("T")[0]);
+  //   const todayDate = new Date().toISOString().split("T")[0];
+  //   console.log(todayDate);
+  // console.log(todayDate.toISOString().split("T")[0]);
 
   console.log("request: ", page);
   const options = {

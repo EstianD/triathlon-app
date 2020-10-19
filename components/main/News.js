@@ -11,9 +11,9 @@ import NewsHeading from "./NewsHeading";
 import NewsStory from "./NewsStory";
 
 function News() {
-  // const [news, setNews] = useState();
+  // Set page number to 1 to load first page
   const [pageNumber, setPageNumber] = useState(1);
-
+  // Destructure variables from hook
   const { news, error, loading, hasMore } = useGetNews(pageNumber);
 
   const observer = useRef();
@@ -28,15 +28,14 @@ function News() {
         }
       });
       if (node) observer.current.observe(node);
-      // console.log(pageNumber);
     },
     [loading, hasMore]
   );
 
-  console.log("news:", news);
-  console.log("error:", error);
-  console.log("loading: ", loading);
-  console.log("hasmore: ", hasMore);
+  // console.log("news:", news);
+  // console.log("error:", error);
+  // console.log("loading: ", loading);
+  // console.log("hasmore: ", hasMore);
 
   return (
     <div>

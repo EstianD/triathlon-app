@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 
 import Header from "../components/header/Header";
 import News from "../components/main/News";
+import Results from "../components/main/Results";
 
 import { Col, Row } from "react-bootstrap";
 
@@ -22,7 +23,9 @@ export default function Home() {
         <Col xs={9}>
           <News />
         </Col>
-        <Col xs={3}>right</Col>
+        <Col xs={3}>
+          <Results />
+        </Col>
       </Row>
     </Container>
   );
