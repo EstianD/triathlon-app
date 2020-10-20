@@ -1,12 +1,10 @@
 import axios from "axios";
 
-export default (req, res) => {
-  const url = "https://api.triathlon.org/v1/search/events";
+export default async (req, res) => {
+  const baseUrl = "https://api.triathlon.org/v1";
   const apiKey = process.env.APIKEY;
-
+  // Date of today to filter end date for events
   const todayDate = new Date().toISOString().split("T")[0];
-  console.log(todayDate);
-  //   console.log(todayDate.toISOString().split("T")[0]);
 
   const options = {
     headers: {
@@ -14,7 +12,7 @@ export default (req, res) => {
     },
     params: {
       per_page: 100,
-      // page: 1,
+      page: 1,
       order: "desc",
       filters: "year,2020|sport.cat_name, triathlon",
       end_date: todayDate,
@@ -22,30 +20,101 @@ export default (req, res) => {
     },
   };
 
-  async function getLatestResults() {
-    const resultData = await axios.get(url, options);
-    //  console.log(res.data);
-    let { data } = resultData.data;
+  async function getEventResults(eventId, progId) {
+    const resultsUrl = `${baseUrl}/events/${eventId}/programs/${progId}/results`;
+    const options = {
+      headers: {
+        apikey: apiKey,
+      },
+      params: {
+        limit: 10,
+      },
+    };
 
-    //  console.log(data);
-    let resultArray = data.filter((event) => event.event_cancelled === false);
-    //  console.log(resultArray);
-    //  console.log("EVENT: ", resultArray[resultArray.length - 1]);
+    try {
+      const resultsData = await axios.get(resultsUrl, options);
+      const { results } = resultsData.data.data;
 
-    let results = resultArray[resultArray.length - 1];
-    res.json({
-      data: resultArray,
-    });
-    //  data.map((entry) => {
-    //    if (entry.event_cancelled === false) {
-    //      console.log(entry);
-    //      return entry;
-    //    }
-    //  });
+      let newResultsObject = {};
+      let newResultsArr = [];
+      results.map((athlete) => {
+        newResultsObject = {
+          athleteId: athlete.athlete_id,
+          athleteTitle: athlete.athlete_title,
+          position: athlete.position,
+          totalTime: athlete.total_time,
+          athleteFlag: athlete.athlete_flag,
+        };
+
+        newResultsArr.push(newResultsObject);
+      });
+
+      return newResultsArr;
+    } catch (e) {
+      console.log("error getting results: ", e.message);
+    }
+  }
+
+  async function getProgramId(eventId) {
+    const progUrl = `${baseUrl}/events/${eventId}/programs`;
+    const options = {
+      headers: {
+        apikey: apiKey,
+      },
+      params: {
+        prog_name: "Elite_Men",
+      },
+    };
+
+    try {
+      const prog = await axios.get(progUrl, options);
+      const { data } = prog.data;
+      const progId = data[0].prog_id;
+      //  console.log("PROG: ", data);
+      if (data[0].results) {
+        return progId;
+      }
+    } catch (e) {
+      console.log("Error retrieving programId: ", e.message);
+    }
+  }
+
+  async function getLatestEvent() {
+    try {
+      const eventUrl = `${baseUrl}/search/events`;
+      //  Get list of events
+      const eventData = await axios.get(eventUrl, options);
+      let { data } = eventData.data;
+      // Retrieve events that was not cancelled
+      let eventArray = data.filter((event) => event.event_cancelled === false);
+      // Get latest event that had a result
+      let event = eventArray[eventArray.length - 1];
+      return event;
+    } catch (e) {
+      console.log("Error retrieving events: ", e.message);
+    }
   }
 
   try {
-    getLatestResults();
+    //  getLatestResults();
+    const event = await getLatestEvent();
+    const eventId = event.event_id;
+    // Retrieve prog_id for event
+    const programId = await getProgramId(eventId);
+    const eventResults = await getEventResults(eventId, programId);
+    //  console.log(programId);
+    //  console.log(eventId);
+    //  console.log(eventResults);
+    console.log(event);
+    const LatestResults = {
+      eventTitle: event.event_title,
+      eventDate: event.event_date,
+      eventResults,
+    };
+
+    res.json({
+      data: LatestResults,
+    });
     //  console.log(dataResults);
     //  res.json(dataResults);
   } catch (e) {

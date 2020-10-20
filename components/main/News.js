@@ -16,6 +16,8 @@ function News() {
   // Destructure variables from hook
   const { news, error, loading, hasMore } = useGetNews(pageNumber);
 
+  // console.log("news: ", news);
+
   const observer = useRef();
   const lastStoryElement = useCallback(
     (node) => {

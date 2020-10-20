@@ -1,5 +1,5 @@
 function calcTimeDifference(storyDate) {
-  console.log(storyDate);
+  // console.log(storyDate);
   //   Calculate the difference in Minutes
   function calcMinutesDiff(now, dateStory) {
     let millisecondsDiff = now - dateStory;
@@ -12,7 +12,7 @@ function calcTimeDifference(storyDate) {
   function calcHoursDiff(now, dateStory) {
     let millisecondsDiff = now - dateStory;
     let hoursDiff = Math.floor(millisecondsDiff / 1000 / 60 / 60);
-    console.log(hoursDiff);
+    // console.log(hoursDiff);
     return hoursDiff;
   }
 
@@ -20,7 +20,7 @@ function calcTimeDifference(storyDate) {
   function calcDaysDiff(now, dateStory) {
     let millisecondsDiff = now - dateStory;
     let daysDiff = Math.floor(millisecondsDiff / 1000 / 60 / 60 / 24);
-    console.log(daysDiff);
+    // console.log(daysDiff);
     return daysDiff;
   }
 
