@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { Row, Col, Card, Image } from "react-bootstrap";
 
 import styles from "./NewsHeading.module.css";
@@ -26,25 +27,27 @@ function NewsHeading({ news }) {
 
   return (
     <div onMouseEnter={handleOnHover} onMouseLeave={handleOnHoverLeave}>
-      <Card className={styles.newsHeadingCard}>
-        <Row>
-          <Col xs={6}>
-            <div className={styles.overflow}>
-              <Card.Img src={news.news_thumbnail} style={hoverStyle} />
-            </div>
-          </Col>
-          <Col xs={6}>
-            <Card.ImgOverlay>
-              <Card.Title>{news.news_title.toUpperCase()}</Card.Title>
-              {/* <Card.Text>
+      <Link href={"/articles/" + news.news_id}>
+        <Card className={styles.newsHeadingCard}>
+          <Row>
+            <Col xs={6}>
+              <div className={styles.overflow}>
+                <Card.Img src={news.news_thumbnail} style={hoverStyle} />
+              </div>
+            </Col>
+            <Col xs={6}>
+              <Card.ImgOverlay>
+                <Card.Title>{news.news_title.toUpperCase()}</Card.Title>
+                {/* <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text> */}
-              {calcTimeDifference(news.news_entry_date)}
-            </Card.ImgOverlay>
-          </Col>
-        </Row>
-      </Card>
+                {calcTimeDifference(news.news_entry_date)}
+              </Card.ImgOverlay>
+            </Col>
+          </Row>
+        </Card>
+      </Link>
     </div>
   );
 }

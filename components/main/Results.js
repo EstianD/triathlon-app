@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 
-import { Col, Row, Table, Spinner } from "react-bootstrap";
+import { Col, Row, Table, Spinner, Image } from "react-bootstrap";
 
 import useGetLatestResults from "../hooks/useGetLatestResults";
+
+// Import stylesheet
+import styles from "./Results.module.css";
 
 function Results() {
   const {
@@ -10,6 +13,7 @@ function Results() {
     resultsError,
     results,
     resultsTitle,
+    resultsDate,
   } = useGetLatestResults();
   //   const
   //   console.log(results.eventResults);
@@ -20,50 +24,54 @@ function Results() {
   //     console.log(x);
   //   });
   return (
-    <div>
-      <Col>
+    <div className={styles.resultsDiv}>
+      <Row>
+        <Col>
+          <span className={styles.resultsHeading}>Latest Results</span>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className={styles.resultTitle}>{resultsTitle}</div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <span className={styles.resultDate}>{resultsDate}</span>
+        </Col>
+      </Row>
+      {results.map((athlete) => (
         <Row>
-          <Col>{resultsTitle}</Col>
+          <Col xs={1}>
+            <span className={styles.resultPosition}>{athlete.position}</span>
+          </Col>
+          <Col xs={1}>
+            <Image src={athlete.athleteFlag} />
+          </Col>
+          <Col xs={5}>
+            <span className={styles.resultsAthleteTitle}>
+              {athlete.athleteTitle}
+            </span>
+          </Col>
+          <Col xs={4}>
+            <span className={styles.resultAthleteTime}>
+              {athlete.totalTime}
+            </span>
+          </Col>
         </Row>
-        <Table responsive borderless>
-          <thead>
-            <tr>
-              <th>Pos</th>
-              <th>Name</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {results.map((athlete) => {
-              return (
-                <tr>
-                  <td>1</td>
-                  <td>00</td>
-                  <td>some title</td>
-                  <td>some time</td>
+      ))}
 
-                  {/* <Col xs={1}>1</Col>
-                  <Col xs={1}>OO</Col>
-                  <Col xs={6}>SOME TITLE</Col>
-                  <Col xs={3}>sometime</Col> */}
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-
-        {resultsLoading && (
-          <Row className="justify-content-md-center">
-            <div className="my-auto">
-              <Spinner
-                //   className={styles.newsLoader}
-                animation="border"
-                variant="secondary"
-              />
-            </div>
-          </Row>
-        )}
-      </Col>
+      {resultsLoading && (
+        <Row className="justify-content-md-center">
+          <div className="my-auto">
+            <Spinner
+              //   className={styles.newsLoader}
+              animation="border"
+              variant="secondary"
+            />
+          </div>
+        </Row>
+      )}
     </div>
   );
   //   return (

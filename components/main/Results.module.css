@@ -1,0 +1,34 @@
+.resultsHeading {
+  font-size: 1vw;
+}
+
+.resultsDiv {
+  padding: 0;
+}
+
+.resultTitle {
+  font-size: 0.9vw;
+  font-family: bold;
+}
+
+.resultDate {
+  font-size: 0.8vw;
+  float: left;
+  font-family: bold;
+}
+
+.resultsAthleteTitle {
+  font-size: 0.7vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultPosition {
+  font-size: 0.7vw;
+}
+
+.resultAthleteTime {
+  font-size: 0.7vw;
+  float: right;
+}

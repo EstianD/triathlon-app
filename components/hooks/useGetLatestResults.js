@@ -6,6 +6,7 @@ function useGetLatestResults() {
   const [resultsError, setResultsError] = useState(false);
   const [results, setResults] = useState([]);
   const [resultsTitle, setResultsTitle] = useState("");
+  const [resultsDate, setResultsDate] = useState("");
 
   useEffect(() => {
     let cancel;
@@ -17,10 +18,11 @@ function useGetLatestResults() {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        //   console.log(res.data.data);
+        console.log(res.data);
         setResultsLoading(false);
         setResults(res.data.data.eventResults);
         setResultsTitle(res.data.data.eventTitle);
+        setResultsDate(res.data.data.eventDate);
         //   console.log(results);
       })
       .catch((e) => {
@@ -30,7 +32,7 @@ function useGetLatestResults() {
     return () => cancel();
   }, []);
 
-  return { resultsLoading, resultsError, results, resultsTitle };
+  return { resultsLoading, resultsError, results, resultsTitle, resultsDate };
 }
 
 export default useGetLatestResults;

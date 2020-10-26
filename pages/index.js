@@ -2,13 +2,13 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 // import Button from "@material-ui/core/Button";
 // import Grid from "@material-ui/core/Grid";
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
 
 import Header from "../components/header/Header";
 import News from "../components/main/News";
 import Results from "../components/main/Results";
 
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 
 export default function Home() {
   return (
