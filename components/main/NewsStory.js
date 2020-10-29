@@ -5,7 +5,7 @@ import styles from "./NewsStory.module.css";
 import calcTimeDifference from "../services/calcTimeDifference";
 
 function NewsStory({ story }) {
-  // console.log(story);
+  // console.log("STORY: ", story);
 
   const handleOnHover = () => {
     setHovered((prevState) => !prevState);
@@ -41,7 +41,7 @@ function NewsStory({ story }) {
           <Col xs={4} md={4}>
             <div className={styles.overflow}>
               <Image
-                src={story.news_thumbnail}
+                src={story.data.image}
                 className={styles.newsImage}
                 style={imageHoverStyle}
               />
@@ -49,12 +49,12 @@ function NewsStory({ story }) {
           </Col>
           <Col xs={8}>
             <Card.Body>
-              <Card.Title>{story.news_title}</Card.Title>
+              <Card.Title>{story.data.title}</Card.Title>
               {/* <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text> */}
-              {calcTimeDifference(story.news_entry_date)}
+              {calcTimeDifference(story.data.date)}
             </Card.Body>
           </Col>
         </Row>

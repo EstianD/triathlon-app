@@ -11,12 +11,13 @@ import useGetNews from "../hooks/useGetNews";
 import NewsHeading from "./NewsHeading";
 import NewsStory from "./NewsStory";
 
-function News() {
+function News({ newsData }) {
   // Set page number to 1 to load first page
   const [pageNumber, setPageNumber] = useState(1);
   // Destructure variables from hook
-  const { news, error, loading, hasMore } = useGetNews(pageNumber);
-
+  const { news, error, loading, hasMore } = useGetNews(pageNumber, newsData);
+  // const [news, setNews] = useState(newsData);
+  // console.log(process.env.APIKEY);
   // console.log("news: ", news);
 
   const observer = useRef();
@@ -25,6 +26,7 @@ function News() {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
+        console.log("ENTRIES: ", entries);
         if (entries[0].isIntersecting && hasMore) {
           console.log("vissible");
           setPageNumber((prevPageNumber) => prevPageNumber + 1);
@@ -39,28 +41,29 @@ function News() {
   // console.log("error:", error);
   // console.log("loading: ", loading);
   // console.log("hasmore: ", hasMore);
-
+  // console.log("SOME NEWS: ", news);
   return (
     <div>
       <Col>
         <Row>
           {news.map((story, i) => {
+            {
+              /* console.log("HERE: ", story); */
+            }
             if (i === 0) {
               return (
-                <div key={news[0].news_id}>
+                <div key={news[0].newsId}>
                   <NewsHeading news={news[0]} />
                 </div>
               );
             }
             if (i !== 0) {
-              {
-                /* Check if this is the last element on the page */
-              }
+              console.log(news);
               if (news.length === i + 1) {
                 return (
                   <div
                     ref={lastStoryElement}
-                    key={story.news_id}
+                    key={story.newsId}
                     style={{ width: "100%" }}
                   >
                     <NewsStory story={story} />
@@ -68,7 +71,7 @@ function News() {
                 );
               } else {
                 return (
-                  <div key={story.news_id} style={{ width: "100%" }}>
+                  <div key={story.newsId} style={{ width: "100%" }}>
                     <NewsStory story={story} />
                   </div>
                 );

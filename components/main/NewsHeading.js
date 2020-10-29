@@ -27,22 +27,22 @@ function NewsHeading({ news }) {
 
   return (
     <div onMouseEnter={handleOnHover} onMouseLeave={handleOnHoverLeave}>
-      <Link href={"/articles/" + news.news_id}>
+      <Link href={"/articles/" + news.newsId}>
         <Card className={styles.newsHeadingCard}>
           <Row>
             <Col xs={6}>
               <div className={styles.overflow}>
-                <Card.Img src={news.news_thumbnail} style={hoverStyle} />
+                <Card.Img src={news.data.image} style={hoverStyle} />
               </div>
             </Col>
             <Col xs={6}>
               <Card.ImgOverlay>
-                <Card.Title>{news.news_title.toUpperCase()}</Card.Title>
+                <Card.Title>{news.data.title.toUpperCase()}</Card.Title>
                 {/* <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text> */}
-                {calcTimeDifference(news.news_entry_date)}
+                {calcTimeDifference(news.data.date)}
               </Card.ImgOverlay>
             </Col>
           </Row>

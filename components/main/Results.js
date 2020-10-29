@@ -7,18 +7,21 @@ import useGetLatestResults from "../hooks/useGetLatestResults";
 // Import stylesheet
 import styles from "./Results.module.css";
 
-function Results() {
-  const {
-    resultsLoading,
-    resultsError,
-    results,
-    resultsTitle,
-    resultsDate,
-  } = useGetLatestResults();
+function Results({ latestResults }) {
+  // const {
+  //   resultsLoading,
+  //   resultsError,
+  //   results,
+  //   resultsTitle,
+  //   resultsDate,
+  // } = useGetLatestResults();
   //   const
   //   console.log(results.eventResults);
 
-  console.log(results);
+  const results = latestResults.LatestResults;
+  console.log(typeof latestResults);
+  console.log("PRE: ", latestResults);
+  console.log("RESULTS:  ", results);
   //   console.log(typeof results.eventResults);
   //   results.eventResults.map((x) => {
   //     console.log(x);
@@ -32,15 +35,15 @@ function Results() {
       </Row>
       <Row>
         <Col>
-          <div className={styles.resultTitle}>{resultsTitle}</div>
+          <div className={styles.resultTitle}>{results.eventTitle}</div>
         </Col>
       </Row>
       <Row>
         <Col>
-          <span className={styles.resultDate}>{resultsDate}</span>
+          <span className={styles.resultDate}>{results.eventDate}</span>
         </Col>
       </Row>
-      {results.map((athlete) => (
+      {results.eventResults.map((athlete) => (
         <Row>
           <Col xs={1}>
             <span className={styles.resultPosition}>{athlete.position}</span>
@@ -61,7 +64,7 @@ function Results() {
         </Row>
       ))}
 
-      {resultsLoading && (
+      {/* {resultsLoading && (
         <Row className="justify-content-md-center">
           <div className="my-auto">
             <Spinner
@@ -71,7 +74,7 @@ function Results() {
             />
           </div>
         </Row>
-      )}
+      )} */}
     </div>
   );
   //   return (
