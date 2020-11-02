@@ -36,7 +36,7 @@ export default function Home({ newsData, resultData }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const newsData = await getSortedNews(1);
   const resultData = await getLatestResults();
   // console.log(resultData);
