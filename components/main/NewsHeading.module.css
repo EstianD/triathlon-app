@@ -4,7 +4,9 @@
 }
 
 .headingImage {
-  /* overflow: hidden; */
+  width: 250px;
+  min-height: 150px;
+  max-height: 200px;
 }
 
 .overflow {

@@ -8,11 +8,6 @@ export default (req, res) => {
     query: { page },
   } = req;
 
-  //   const todayDate = new Date().toISOString().split("T")[0];
-  //   console.log(todayDate);
-  // console.log(todayDate.toISOString().split("T")[0]);
-
-  // console.log("request: ", page);
   const options = {
     headers: {
       apikey: apiKey,
@@ -21,16 +16,25 @@ export default (req, res) => {
       per_page: 10,
       order: "desc",
       page: page,
-      // end_date: todayDate,
     },
   };
 
-  //   console.log(options);
-
   async function getNewsData() {
-    const data = await axios.get(url, options);
-    //  console.log(data.data);
-    res.json(data.data);
+    const { data } = await axios.get(url, options);
+
+    let newsData = data.data.map((article) => {
+      let newsId = article.news_id;
+      let data = {
+        title: article.news_title,
+        date: article.news_entry_date,
+        image: article.news_thumbnail,
+      };
+
+      return { newsId, data };
+    });
+
+    res.json(newsData);
+    return newsData;
   }
 
   try {
@@ -38,11 +42,4 @@ export default (req, res) => {
   } catch (e) {
     res.json({ msg: e });
   }
-
-  // console.log(data);
-
-  // res.json(data.data);
-
-  // res.statusCode = 200;
-  // res.json({ key: process.env.APIKEY });
 };

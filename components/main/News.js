@@ -7,7 +7,7 @@ import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
 import styles from "./News.module.css";
 // Import custom hooks
 import useGetNews from "../hooks/useGetNews";
-
+// Import components
 import NewsHeading from "./NewsHeading";
 import NewsStory from "./NewsStory";
 
@@ -16,19 +16,17 @@ function News({ newsData }) {
   const [pageNumber, setPageNumber] = useState(1);
   // Destructure variables from hook
   const { news, error, loading, hasMore } = useGetNews(pageNumber, newsData);
-  // const [news, setNews] = useState(newsData);
-  // console.log(process.env.APIKEY);
-  // console.log("news: ", news);
 
+  // Function for detecting when last news article is vissible on page
+  // When last story is vissible, increment page by 1 and retrieve the next page of data
   const observer = useRef();
   const lastStoryElement = useCallback(
     (node) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        console.log("ENTRIES: ", entries);
         if (entries[0].isIntersecting && hasMore) {
-          console.log("vissible");
+          // Increment page number by 1 and set the state for the page
           setPageNumber((prevPageNumber) => prevPageNumber + 1);
         }
       });
@@ -37,18 +35,14 @@ function News({ newsData }) {
     [loading, hasMore]
   );
 
-  // console.log("news:", news);
-  // console.log("error:", error);
-  // console.log("loading: ", loading);
-  // console.log("hasmore: ", hasMore);
-  // console.log("SOME NEWS: ", news);
   return (
     <div>
       <Col>
         <Row>
+          {/* Loop through news data */}
           {news.map((story, i) => {
             {
-              /* console.log("HERE: ", story); */
+              /* Set the first retrieved article as the heading */
             }
             if (i === 0) {
               return (
@@ -57,8 +51,10 @@ function News({ newsData }) {
                 </div>
               );
             }
+            {
+              /* Display the rest of the articles */
+            }
             if (i !== 0) {
-              console.log(news);
               if (news.length === i + 1) {
                 return (
                   <div

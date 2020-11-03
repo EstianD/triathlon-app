@@ -17,6 +17,11 @@ function NewsHeading({ news }) {
     setHovered((prevState) => !prevState);
   };
 
+  // Function for loading a default image if there is no image for article or image load fails
+  const loadDefaultImage = (e) => {
+    e.target.src = "/images/no-image.jpeg";
+  };
+
   const [hovered, setHovered] = useState(false);
   const hoverStyle = hovered
     ? {
@@ -32,16 +37,17 @@ function NewsHeading({ news }) {
           <Row>
             <Col xs={6}>
               <div className={styles.overflow}>
-                <Card.Img src={news.data.image} style={hoverStyle} />
+                <Card.Img
+                  src={news.data.image}
+                  style={hoverStyle}
+                  onError={(e) => loadDefaultImage(e)}
+                />
               </div>
             </Col>
             <Col xs={6}>
               <Card.ImgOverlay>
                 <Card.Title>{news.data.title.toUpperCase()}</Card.Title>
-                {/* <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text> */}
+
                 {calcTimeDifference(news.data.date)}
               </Card.ImgOverlay>
             </Col>
