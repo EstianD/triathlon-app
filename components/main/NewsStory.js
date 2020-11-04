@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Card, Col, Row, Image } from "react-bootstrap";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+// Import styles module
 import styles from "./NewsStory.module.css";
 
 // import function to calculate time differences for article post dates
@@ -43,12 +46,19 @@ function NewsStory({ story }) {
         <Row>
           <Col xs={4} md={4}>
             <div className={styles.overflow}>
-              <Image
+              <LazyLoadImage
+                className={styles.newsImage}
+                // alt={image.alt}
+                src={story.data.image} // use normal <img> attributes as props
+                style={imageHoverStyle}
+                effect="blur"
+              />
+              {/* <Image
                 src={story.data.image}
                 className={styles.newsImage}
                 style={imageHoverStyle}
                 onError={(e) => loadDefaultImage(e)}
-              />
+              /> */}
             </div>
           </Col>
           <Col xs={8}>

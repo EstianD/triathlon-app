@@ -7,13 +7,13 @@ import { Col, Row, Container } from "react-bootstrap";
 import Header from "../../components/header/Header";
 import Article from "../../components/main/Article";
 
-function article({ todos }) {
-  // const router = useRouter();
+function article() {
+  const router = useRouter();
   // console.log(router);
-  // const { article } = router.query;
+  const { article } = router.query;
 
-  // console.log("ROUTER: ", article);
-  console.log(todos);
+  console.log("ROUTER: ", article);
+
   return (
     <Container fluid="md">
       <Head>
