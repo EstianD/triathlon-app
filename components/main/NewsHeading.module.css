@@ -1,12 +1,15 @@
 .newsHeadingCard {
   padding: 0.5rem;
-  border-radius: 4px;
+  width: 100%;
+  display: relative;
+  /* border: none; */
+  border-bottom: 1px solid rgb(170, 170, 170);
 }
 
 .headingImage {
-  width: 250px;
+  width: 100%;
   min-height: 150px;
-  max-height: 200px;
+  max-height: 250px;
 }
 
 .overflow {

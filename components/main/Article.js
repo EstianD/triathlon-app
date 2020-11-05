@@ -18,6 +18,7 @@ function Article({ article }) {
 
   return (
     <div>
+      <pre>{JSON.stringify(article.data, null, 2)}</pre>
       <Col>
         <Row>
           <Col xs={9}>

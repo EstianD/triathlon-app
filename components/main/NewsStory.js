@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { Card, Col, Row, Image } from "react-bootstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -42,34 +43,37 @@ function NewsStory({ story }) {
 
   return (
     <div onMouseEnter={handleOnHover} onMouseLeave={handleOnHoverLeave}>
-      <Card className={styles.cardHoverStyle} style={cardHoverStyle}>
-        <Row>
-          <Col xs={4} md={4}>
-            <div className={styles.overflow}>
-              <LazyLoadImage
-                className={styles.newsImage}
-                // alt={image.alt}
-                src={story.data.image} // use normal <img> attributes as props
-                style={imageHoverStyle}
-                effect="blur"
-              />
-              {/* <Image
+      <Link href={"/articles/" + story.newsId}>
+        <Card className={styles.cardHoverStyle} style={cardHoverStyle}>
+          <Row>
+            <Col xs={4} md={4}>
+              <div className={styles.overflow}>
+                <LazyLoadImage
+                  className={styles.newsImage}
+                  // alt={image.alt}
+                  src={story.data.image} // use normal <img> attributes as props
+                  style={imageHoverStyle}
+                  effect="blur"
+                  onError={(e) => loadDefaultImage(e)}
+                />
+                {/* <Image
                 src={story.data.image}
                 className={styles.newsImage}
                 style={imageHoverStyle}
                 onError={(e) => loadDefaultImage(e)}
               /> */}
-            </div>
-          </Col>
-          <Col xs={8}>
-            <Card.Body>
-              <Card.Title>{story.data.title}</Card.Title>
+              </div>
+            </Col>
+            <Col xs={8}>
+              <Card.Body>
+                <Card.Title>{story.data.title}</Card.Title>
 
-              {calcTimeDifference(story.data.date)}
-            </Card.Body>
-          </Col>
-        </Row>
-      </Card>
+                {calcTimeDifference(story.data.date)}
+              </Card.Body>
+            </Col>
+          </Row>
+        </Card>
+      </Link>
     </div>
   );
 }

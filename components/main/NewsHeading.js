@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Row, Col, Card, Image } from "react-bootstrap";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import styles from "./NewsHeading.module.css";
 
@@ -37,9 +38,11 @@ function NewsHeading({ news }) {
           <Row>
             <Col xs={6}>
               <div className={styles.overflow}>
-                <Card.Img
+                <LazyLoadImage
+                  className={styles.headingImage}
                   src={news.data.image}
                   style={hoverStyle}
+                  effect="blur"
                   onError={(e) => loadDefaultImage(e)}
                 />
               </div>
