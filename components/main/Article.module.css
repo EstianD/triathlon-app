@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+}
+
+.articleImage {
+  width: 75%;
+}
+
+.article {
+  text-align: center;
+  margin: auto;
+}
+
+.articleHeading {
+  text-align: center;
+}
+
+.articleBody {
+  text-align: left;
+  line-height: 1.7rem;
+}

@@ -1,31 +1,41 @@
 import React, { useEffect } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Media } from "react-bootstrap";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import parse from "html-react-parser";
+
+// Import styles
+import styles from "./Article.module.css";
 
 // import article hook
 import useGetArticle from "../hooks/useGetArticle";
 
 function Article({ article }) {
-  const { articleInfo, loading, error } = useGetArticle(article);
-  console.log("SECOND: ", articleInfo);
+  // const { articleInfo, loading, error } = useGetArticle(article);
+  // console.log("SECOND: ", articleInfo);
 
-  //   const renderArticle = () => {
-  //      object.keys(articleInfo.data).map((obj, i) => {
-  //         return (
-  //            <div>{articleInfo.data[obj].data}</div>
-  //         )
-  //      })
-  //   }
+  const renderBodyToHtml = (str) => {
+    let parser = new DOMParser();
+    return parser.parseFromString(str, "text/html").body;
+  };
 
   return (
-    <div>
-      <pre>{JSON.stringify(article.data, null, 2)}</pre>
+    <div className={styles.container}>
       <Col>
         <Row>
-          <Col xs={9}>
-            {/* <Image src={articleInfo.data.news_thumbnail} /> */}
-          </Col>
-          <Col xs={3}></Col>
+          <div className={styles.article}>
+            <h1>{article.data.news_title}</h1>
+          </div>
         </Row>
+        <img
+          className={styles.articleImage}
+          // alt={image.alt}
+          src={article.data.news_thumbnail} // use normal <img> attributes as props
+          effect="blur"
+          // onError={(e) => loadDefaultImage(e)}
+        />
+        <div className={styles.articleBody}>
+          <p>{parse(article.data.body)}</p>
+        </div>
       </Col>
     </div>
   );

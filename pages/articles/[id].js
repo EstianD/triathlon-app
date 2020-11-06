@@ -24,7 +24,6 @@ function article({ article }) {
       </Head>
       <Header />
       <Article article={article} />
-      <Row></Row>
     </Container>
   );
 }
