@@ -1,21 +1,36 @@
 .container {
-  text-align: center;
+  /* text-align: left; */
 }
 
 .articleImage {
+  width: 100%;
+}
+
+.articleMoreImages {
   width: 75%;
 }
 
 .article {
-  text-align: center;
+  text-align: left;
   margin: auto;
 }
 
 .articleHeading {
-  text-align: center;
+  text-align: left;
+  font-size: 3vw;
+  font-family: bold;
 }
 
 .articleBody {
   text-align: left;
   line-height: 1.7rem;
+  /* font-size: 1.5vw; */
+}
+
+.author {
+  font-size: 1.5vw;
+}
+
+.date {
+  font-size: 1.5vw;
 }

@@ -56,12 +56,6 @@ function NewsStory({ story }) {
                   effect="blur"
                   onError={(e) => loadDefaultImage(e)}
                 />
-                {/* <Image
-                src={story.data.image}
-                className={styles.newsImage}
-                style={imageHoverStyle}
-                onError={(e) => loadDefaultImage(e)}
-              /> */}
               </div>
             </Col>
             <Col xs={8}>

@@ -23,7 +23,12 @@ function article({ article }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Article article={article} />
+      <Row>
+        <Col xs={9}>
+          <Article article={article} />
+        </Col>
+        <Col xs={3}></Col>
+      </Row>
     </Container>
   );
 }
