@@ -8,6 +8,7 @@ import Header from "../../components/header/Header";
 import Article from "../../components/main/Article";
 
 import { getNewsIds, getArticle } from "../../lib/news";
+// import { getLatestResults } from "../lib/results";
 
 function article({ article }) {
   // console.log("ARTICLE DATA: ", article);
@@ -34,6 +35,7 @@ export async function getStaticProps({ params }) {
 
   // Check if article is related to a event
   console.log("EVENT_ID: ", article.data.related_event);
+  // const resultsData = await getLatestResults();
 
   return {
     props: { article },
