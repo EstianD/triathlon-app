@@ -46,7 +46,7 @@ function News({ newsData }) {
             }
             if (i === 0) {
               return (
-                <div key={news[0].newsId}>
+                <div key={news[0].newsId} style={{ width: "100%" }}>
                   <NewsHeading news={news[0]} />
                 </div>
               );

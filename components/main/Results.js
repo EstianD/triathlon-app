@@ -38,7 +38,9 @@ function Results({ latestResults }) {
             </Col>
             <Col xs={5}>
               <span className={styles.resultsAthleteTitle}>
-                {athlete.athleteTitle}
+                <a href={athlete.athleteProfile} target="_blank">
+                  {athlete.athleteTitle}
+                </a>
               </span>
             </Col>
             <Col xs={4}>

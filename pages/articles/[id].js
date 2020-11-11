@@ -10,12 +10,7 @@ import Article from "../../components/main/Article";
 import { getNewsIds, getArticle } from "../../lib/news";
 
 function article({ article }) {
-  // const router = useRouter();
-  // const { article } = router.query;
-  // console.log(ids);
-
-  console.log("ARTICLE: ", article);
-
+  // console.log("ARTICLE DATA: ", article);
   return (
     <Container fluid="md">
       <Head>
@@ -34,13 +29,15 @@ function article({ article }) {
 }
 
 export async function getStaticProps({ params }) {
-  console.log("PARAMS: ", params.id);
+  // console.log("PARAMS: ", params.id);
   const article = await getArticle(params.id);
+
+  // Check if article is related to a event
+  console.log("EVENT_ID: ", article.data.related_event);
 
   return {
     props: { article },
   };
-  console.log("RES DATA: ", res);
 }
 
 export async function getStaticPaths() {

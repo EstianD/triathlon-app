@@ -7,18 +7,25 @@
 }
 
 .articleMoreImages {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 75%;
 }
 
 .article {
-  text-align: left;
-  margin: auto;
+  /* text-align: left;
+  margin: auto; */
 }
 
 .articleHeading {
   text-align: left;
   font-size: 3vw;
   font-family: bold;
+}
+
+.articleSections {
+  padding: 1rem;
 }
 
 .articleBody {

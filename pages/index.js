@@ -33,7 +33,7 @@ export default function Home({ newsData, resultData }) {
 }
 
 // Pre-render initial data before page loads
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Retrieve news data for the first page
   const newsData = await getSortedNews(1);
   // Retrieve latest completed event results

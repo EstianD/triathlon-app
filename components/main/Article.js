@@ -12,6 +12,8 @@ import useGetArticle from "../hooks/useGetArticle";
 function Article({ article }) {
   const { data } = article;
 
+  // console.log(article);
+
   let count = 0;
   let countArr = [];
   let imageNum = 0;
@@ -33,7 +35,9 @@ function Article({ article }) {
           imageNum++;
           return (
             <div key={imageNum - 1}>
-              <p key={"p" + i}>{parse(item)}</p>
+              <p className={styles.articleSections} key={"p" + i}>
+                {parse(item)}
+              </p>
 
               <img
                 className={styles.articleMoreImages}
@@ -44,7 +48,11 @@ function Article({ article }) {
         }
       } else {
         count++;
-        return <p key={"p" + i}>{parse(item)}</p>;
+        return (
+          <p className={styles.articleSections} key={"p" + i}>
+            {parse(item)}
+          </p>
+        );
       }
     });
 
@@ -75,7 +83,7 @@ function Article({ article }) {
     return `${articleDate.getFullYear()}-${articleMonth}-${articleDay}`;
   };
 
-  console.log(article.data);
+  // console.log(article.data);
 
   return (
     <div className={styles.container}>
