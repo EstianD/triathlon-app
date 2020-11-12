@@ -12,6 +12,7 @@ import Results from "../components/main/Results";
 import { Col, Row, Container } from "react-bootstrap";
 
 export default function Home({ newsData, resultData }) {
+  // console.log("RES: ", resultData);
   return (
     <Container fluid="md">
       <Head>
@@ -36,8 +37,10 @@ export default function Home({ newsData, resultData }) {
 export async function getStaticProps() {
   // Retrieve news data for the first page
   const newsData = await getSortedNews(1);
+
   // Retrieve latest completed event results
   const resultData = await getLatestResults();
 
+  // console.log(resultData);
   return { props: { newsData, resultData } };
 }

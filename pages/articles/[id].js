@@ -6,11 +6,12 @@ import { Col, Row, Container } from "react-bootstrap";
 
 import Header from "../../components/header/Header";
 import Article from "../../components/main/Article";
+import Results from "../../components/main/Results";
 
 import { getNewsIds, getArticle } from "../../lib/news";
-// import { getLatestResults } from "../lib/results";
+import { getLatestResults } from "../../lib/results";
 
-function article({ article }) {
+function article({ article, resultData }) {
   // console.log("ARTICLE DATA: ", article);
   return (
     <Container fluid="md">
@@ -23,7 +24,9 @@ function article({ article }) {
         <Col xs={9}>
           <Article article={article} />
         </Col>
-        <Col xs={3}></Col>
+        <Col xs={3}>
+          <Results latestResults={resultData} />
+        </Col>
       </Row>
     </Container>
   );
@@ -32,13 +35,17 @@ function article({ article }) {
 export async function getStaticProps({ params }) {
   // console.log("PARAMS: ", params.id);
   const article = await getArticle(params.id);
-
+  let resultData;
   // Check if article is related to a event
-  console.log("EVENT_ID: ", article.data.related_event);
-  // const resultsData = await getLatestResults();
+  console.log("EVENT CLIENT SIDE: ", article.data.related_event);
+  if (article.data.related_event) {
+    resultData = await getLatestResults(article.data.related_event);
+  } else {
+    resultData = await getLatestResults();
+  }
 
   return {
-    props: { article },
+    props: { article, resultData },
   };
 }
 
