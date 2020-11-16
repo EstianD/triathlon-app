@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Row, Col, Image, Media } from "react-bootstrap";
+import { Row, Col, Media } from "react-bootstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import parse from "html-react-parser";
+import Image from "next/image";
 
 // Import styles
 import styles from "./Article.module.css";
@@ -38,11 +39,13 @@ function Article({ article }) {
               <p className={styles.articleSections} key={"p" + i}>
                 {parse(item)}
               </p>
-
-              <img
-                className={styles.articleMoreImages}
-                src={data.news_images[imageNum - 1].image_url}
-              />
+              <div className={styles.articleMoreImages}>
+                <Image
+                  height={500}
+                  width={500}
+                  src={data.news_images[imageNum - 1].image_url}
+                />
+              </div>
             </div>
           );
         }
@@ -101,13 +104,16 @@ function Article({ article }) {
           </Col>
         </Row>
         <Row>
-          <img
-            className={styles.articleImage}
-            // alt={image.alt}
-            src={article.data.news_thumbnail} // use normal <img> attributes as props
-            // effect="blur"
-            // onError={(e) => loadDefaultImage(e)}
-          />
+          <div className={styles.articleImage}>
+            <Image
+              // alt={image.alt}
+              src={article.data.news_thumbnail} // use normal <img> attributes as props
+              height={2000}
+              width={2000}
+              // effect="blur"
+              // onError={(e) => loadDefaultImage(e)}
+            />
+          </div>
         </Row>
         <Row>
           <Col xs={12}>

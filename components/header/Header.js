@@ -28,9 +28,6 @@ export default function Header() {
               <Link href="/events" passHref>
                 <Nav.Link>Events</Nav.Link>
               </Link>
-              <Link href="/athletes" passHref>
-                <Nav.Link>Athletes</Nav.Link>
-              </Link>
             </Nav>
           </Navbar>
         </Col>

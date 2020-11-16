@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Card, Col, Row, Image } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 // Import styles module
 import styles from "./NewsStory.module.css";
+// Import Image from next
+import Image from "next/image";
 
 // import function to calculate time differences for article post dates
 import calcTimeDifference from "../services/calcTimeDifference";
@@ -48,14 +50,18 @@ function NewsStory({ story }) {
           <Row>
             <Col xs={4} md={4}>
               <div className={styles.overflow}>
-                <LazyLoadImage
-                  className={styles.newsImage}
-                  // alt={image.alt}
-                  src={story.data.image} // use normal <img> attributes as props
-                  style={imageHoverStyle}
-                  effect="blur"
-                  onError={(e) => loadDefaultImage(e)}
-                />
+                <div className={styles.newsImage} style={imageHoverStyle}>
+                  <Image
+                    // alt={image.alt}
+                    src={story.data.image} // use normal <img> attributes as props
+                    // effect="blur"
+                    // layout="responsive"
+                    height={500}
+                    width={500}
+                    quality={100}
+                    onError={(e) => loadDefaultImage(e)}
+                  />
+                </div>
               </div>
             </Col>
             <Col xs={8}>
