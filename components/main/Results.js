@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Col, Row, Table, Spinner, Image, Carousel } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 // Import hook to retrieve latest results
 import useGetLatestResults from "../hooks/useGetLatestResults";
 
@@ -40,7 +41,7 @@ function Results({ latestResults }) {
       <Carousel activeIndex={index} onSelect={handleSelect}>
         {results.eventResults.map((program) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={uuidv4()}>
               <span className={styles.programName}>{program.progName}</span>
               {program.results.map((athlete) => {
                 return (
