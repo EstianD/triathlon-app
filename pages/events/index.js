@@ -2,18 +2,32 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Header from "../../components/header/Header";
-import SearchEvents from "../../components/main/SearchEvents";
+import SearchEvents from "../../components/events/SearchEvents";
+import EventCard from "../../components/events/EventCard";
 
 import { getEvents } from "../../lib/events";
 
 export default function index({ events }) {
   const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState("");
+  const [searchResults, setSearchResults] = useState(events.eventData);
   console.log(events);
 
   const handleSearchChange = (e) => {
     console.log(e.target.value);
     setSearch(e.target.value);
+  };
+
+  const renderEvents = () => {
+    if (searchResults) {
+      searchResults.map((event) => {
+        console.log(event);
+        return (
+          <Col xs={3}>
+            <EventCard />
+          </Col>
+        );
+      });
+    }
   };
 
   return (
@@ -24,6 +38,7 @@ export default function index({ events }) {
           <SearchEvents handleSearchChange={handleSearchChange} />
         </Col>
       </Row>
+      <Row>{renderEvents()}</Row>
     </Container>
   );
 }

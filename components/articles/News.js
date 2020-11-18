@@ -4,7 +4,7 @@ import axios from "axios";
 import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
 
 // Import stylesheet
-import styles from "./News.module.css";
+import styles from "../../styles/News.module.css";
 // Import custom hooks
 import useGetNews from "../hooks/useGetNews";
 // Import components

@@ -5,7 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 // Import Next images
 import Image from "next/image";
 
-import styles from "./NewsHeading.module.css";
+import styles from "../../styles/NewsHeading.module.css";
 
 // Import service
 import calcTimeDifference from "../services/calcTimeDifference";

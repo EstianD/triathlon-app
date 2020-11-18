@@ -6,8 +6,8 @@ import { getSortedNews } from "../lib/news";
 import { getLatestResults } from "../lib/results";
 
 import Header from "../components/header/Header";
-import News from "../components/main/News";
-import Results from "../components/main/Results";
+import News from "../components/articles/News";
+import Results from "../components/results/Results";
 
 import { Col, Row, Container } from "react-bootstrap";
 

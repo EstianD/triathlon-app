@@ -5,8 +5,8 @@ import axios from "axios";
 import { Col, Row, Container } from "react-bootstrap";
 
 import Header from "../../components/header/Header";
-import Article from "../../components/main/Article";
-import Results from "../../components/main/Results";
+import Article from "../../components/articles/Article";
+import Results from "../../components/results/Results";
 
 import { getNewsIds, getArticle } from "../../lib/news";
 import { getLatestResults } from "../../lib/results";

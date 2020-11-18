@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 import Image from "next/image";
 
 // Import styles
-import styles from "./Article.module.css";
+import styles from "../../styles/Article.module.css";
 
 // import article hook
 import useGetArticle from "../hooks/useGetArticle";
