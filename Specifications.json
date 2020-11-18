@@ -1,0 +1,58 @@
+[
+        {
+            "cat_name": "Aquabike",
+            "cat_slug": "aquabike",
+            "cat_id": 453,
+            "cat_parent_id": 0,
+            "cat_order": 1
+        },
+        {
+            "cat_name": "Aquathlon",
+            "cat_slug": "aquathlon",
+            "cat_id": 353,
+            "cat_parent_id": 0,
+            "cat_order": 2
+        },
+        {
+            "cat_name": "Cross Duathlon",
+            "cat_slug": "cross_duathlon",
+            "cat_id": 408,
+            "cat_parent_id": 0,
+            "cat_order": 3
+        },
+        {
+            "cat_name": "Cross Triathlon",
+            "cat_slug": "cross_triathlon",
+            "cat_id": 354,
+            "cat_parent_id": 0,
+            "cat_order": 4
+        },
+        {
+            "cat_name": "Duathlon",
+            "cat_slug": "duathlon",
+            "cat_id": 355,
+            "cat_parent_id": 0,
+            "cat_order": 5
+        },
+        {
+            "cat_name": "Long Distance Triathlon",
+            "cat_slug": "long_distance_triathlon",
+            "cat_id": 356,
+            "cat_parent_id": 0,
+            "cat_order": 6
+        },
+        {
+            "cat_name": "Triathlon",
+            "cat_slug": "triathlon",
+            "cat_id": 357,
+            "cat_parent_id": 0,
+            "cat_order": 7
+        },
+        {
+            "cat_name": "Winter Triathlon",
+            "cat_slug": "winter_triathlon",
+            "cat_id": 358,
+            "cat_parent_id": 0,
+            "cat_order": 8
+        }
+    ]

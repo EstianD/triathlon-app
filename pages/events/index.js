@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 import Header from "../../components/header/Header";
 import SearchEvents from "../../components/events/SearchEvents";
 import EventCard from "../../components/events/EventCard";
+import CategorySelect from "../../components/events/CategorySelect";
+import SpecificationSelect from "../../components/events/SpecificationSelect";
+import CountrySelect from "../../components/events/CountrySelect";
+import DatePicker from "../../components/events/DatePicker";
 
 import { getEvents } from "../../lib/events";
 
@@ -34,8 +38,21 @@ export default function index({ events }) {
     <Container fluid="md">
       <Header />
       <Row>
-        <Col>
-          <SearchEvents handleSearchChange={handleSearchChange} />
+        <Col xs={3}>
+          {/* <SearchEvents handleSearchChange={handleSearchChange} /> */}
+          <CategorySelect />
+        </Col>
+        {/* <Col xs={3}> */}
+        {/* <SpecificationSelect /> */}
+        {/* </Col> */}
+        <Col xs={3}>
+          <CountrySelect />
+        </Col>
+        <Col xs={4}>
+          <DatePicker />
+        </Col>
+        <Col xs={2}>
+          <Button variant="light">Search</Button>{" "}
         </Col>
       </Row>
       <Row>{renderEvents()}</Row>
@@ -46,6 +63,6 @@ export default function index({ events }) {
 // Pre-render event data
 export async function getStaticProps() {
   const events = await getEvents();
-  console.log(events);
+  // console.log(events);
   return { props: { events } };
 }

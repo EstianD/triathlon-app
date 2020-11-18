@@ -1,0 +1,121 @@
+[
+        {
+            "cat_name": "Age-Group Races",
+            "cat_slug": "age_group_races",
+            "cat_id": 483,
+            "cat_parent_id": 0,
+            "cat_order": 1
+        },
+        {
+            "cat_name": "Continental Championship",
+            "cat_slug": "continental_championship",
+            "cat_id": 340,
+            "cat_parent_id": 0,
+            "cat_order": 2
+        },
+        {
+            "cat_name": "Continental Cup",
+            "cat_slug": "continental_cup",
+            "cat_id": 341,
+            "cat_parent_id": 0,
+            "cat_order": 3
+        },
+        {
+            "cat_name": "Development Event",
+            "cat_slug": "development_event",
+            "cat_id": 477,
+            "cat_parent_id": 0,
+            "cat_order": 4
+        },
+        {
+            "cat_name": "Junior Continental Cup",
+            "cat_slug": "junior_continental_cup",
+            "cat_id": 342,
+            "cat_parent_id": 0,
+            "cat_order": 5
+        },
+        {
+            "cat_name": "Major Games",
+            "cat_slug": "major_games",
+            "cat_id": 343,
+            "cat_parent_id": 0,
+            "cat_order": 6
+        },
+        {
+            "cat_name": "Multisport Series",
+            "cat_slug": "multisport_series",
+            "cat_id": 344,
+            "cat_parent_id": 0,
+            "cat_order": 7
+        },
+        {
+            "cat_name": "Paratriathlon World Cup",
+            "cat_slug": "paratriathlon_world_cup",
+            "cat_id": 449,
+            "cat_parent_id": 0,
+            "cat_order": 8
+        },
+        {
+            "cat_name": "Recognised Event",
+            "cat_slug": "recognised_event",
+            "cat_id": 345,
+            "cat_parent_id": 0,
+            "cat_order": 9
+        },
+        {
+            "cat_name": "Recognised Games",
+            "cat_slug": "recognised_games",
+            "cat_id": 346,
+            "cat_parent_id": 0,
+            "cat_order": 10
+        },
+        {
+            "cat_name": "Regional Championships",
+            "cat_slug": "regional_championships",
+            "cat_id": 347,
+            "cat_parent_id": 0,
+            "cat_order": 11
+        },
+        {
+            "cat_name": "World Championships",
+            "cat_slug": "world_championships",
+            "cat_id": 348,
+            "cat_parent_id": 0,
+            "cat_order": 12
+        },
+        {
+            "cat_name": "World Cup",
+            "cat_slug": "world_cup",
+            "cat_id": 349,
+            "cat_parent_id": 0,
+            "cat_order": 13
+        },
+        {
+            "cat_name": "World Paratriathlon Event",
+            "cat_slug": "world_paratriathlon_event",
+            "cat_id": 350,
+            "cat_parent_id": 0,
+            "cat_order": 14
+        },
+        {
+            "cat_name": "World Paratriathlon Series",
+            "cat_slug": "world_paratriathlon_series",
+            "cat_id": 448,
+            "cat_parent_id": 0,
+            "cat_order": 15
+        },
+        {
+            "cat_name": "World Triathlon Series",
+            "cat_slug": "world_triathlon_series",
+            "cat_id": 351,
+            "cat_parent_id": 0,
+            "cat_order": 16
+        },
+        {
+            "cat_name": "YOG Qualifier",
+            "cat_slug": "yog_qualifier",
+            "cat_id": 352,
+            "cat_parent_id": 0,
+            "cat_order": 17
+        }
+    ]
